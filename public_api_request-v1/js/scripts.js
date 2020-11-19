@@ -1,3 +1,5 @@
+//This is the first project that i've downloaded and used the prettify app to auto adjust my code everytime i save the file.
+//This function fetches the URL and returns a promise to parse the JSON into a JS object
 async function fetch(url) {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
@@ -12,6 +14,9 @@ async function fetch(url) {
   });
 }
 
+//This function immediately calls itself after awaiting to fetch the 12 random users
+//It then dynamically displays the users along with a search bar
+//then depending on what you type in the search bar, those results will now be displayed.
 (async function () {
   try {
     const response = await fetch(
@@ -39,6 +44,10 @@ async function fetch(url) {
   }
 })();
 
+//This function dynmaically displays a larger, in depth profile of each person after clicking on the person
+//Then it allows you to click the next and back bottons to go through all the profiles.
+//Once you get to the end of the list, it loops back to the beginning of the list and vice versa.
+//Also when clicking the X in the Modal window, it exits/removes the modal view
 function showModal(results, i) {
   const result = results[i];
   const dob = new Date(result.dob.date);
@@ -102,6 +111,9 @@ function showModal(results, i) {
   });
 }
 
+//This function displays the people by first name and last name depending on what you type in the search bar
+//it puts everything  you type to lowercase
+//Depending on what you type it will remove everything but the results.
 function displayPeople(filter, results) {
   if (filter) {
     results = results.filter((result) => {
